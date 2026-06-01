@@ -32,7 +32,7 @@ jobs:
           context: .
           file: ./deployment/Dockerfile.dev
           push: true
-          tags: ghcr.io/zawthanoo/spring-rest-helloworld:${{ steps.tag-version.outputs.version }}
+          tags: ghcr.io/zawthanoo/pos-apps:${{ steps.tag-version.outputs.version }}
 
       - name: Checkout Kustomize chart Repository
         uses: actions/checkout@v3
@@ -48,8 +48,8 @@ jobs:
           valueFile: order-service/overlays/dev/kustomization.yaml
           branch: main
           createPR: "false"
-          message: "order-service dev release ${{ steps.tag-version.outputs.version }}"
-          token: ${{ secrets.DEVOPS_TOKEN }}
+          message: "order-service dev release for workshop"
+          token: ${{ secrets.MY_GITHUB_TOKEN }}
           workDir: deployment
           changes: |
             {
