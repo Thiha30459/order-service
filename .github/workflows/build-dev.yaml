@@ -3,7 +3,7 @@ name: Build & Deploy — Dev
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   dockr-build-and-push:
@@ -32,7 +32,7 @@ jobs:
           context: .
           file: ./deployment/Dockerfile.dev
           push: true
-          tags: ghcr.io/zawthanoo/pos-apps:${{ steps.tag-version.outputs.version }}
+          tags: ghcr.io/zawthanoo/order-service:${{ steps.tag-version.outputs.version }}
 
       - name: Checkout Kustomize chart Repository
         uses: actions/checkout@v3
